@@ -1,0 +1,96 @@
+#include <iostream>
+using namespace::std;
+
+class mosaic
+{
+private:
+	int x, y, temp, tr;
+	int n=0;
+	int i, j, k;
+	int a[8][8] = {
+		{7, 5, 1, 4, 1, 5, 3, 2},
+		{3, 4, 3, 3, 1, 6, 4, 2},
+		{3, 5, 7, 7, 2, 2, 7, 2},
+		{6, 5, 1, 1, 3, 6, 7, 3},
+		{2, 5, 4, 4, 7, 6, 1, 2},
+		{2, 6, 7, 1, 4, 6, 1, 3},
+		{5, 5, 7, 4, 4, 5, 6, 6}
+	};
+	int b[28][2];
+	int c[28][2];
+
+public:
+	
+	void find()
+	{
+		for (i=0;i<7;i++)
+			for (j = 0; j < 7; j++)
+			{
+				x = a[i][j];
+				y = a[i][j + 1];
+			//	if (x == y) tr = 1;
+			//	else tr = 0;
+				tr = 0;
+				
+				swap();
+				sraw();
+
+				if (tr == 0)
+				{
+					b[n][0] = x;
+					b[n][1] = y;
+					j++;
+				}
+				else
+				{
+					x = a[i][j];
+					y = a[i + 1][j];
+					tr = 0;
+					swap();
+					sraw();
+					if (tr == 1)
+					{
+						cout << "В алгоритме ошибка" << endl;
+					}
+				}
+			}
+	}
+
+	void swap()
+	{
+		if (y > x)
+		{
+			temp = y;
+			y = x;
+			x = temp;
+		}
+	}
+
+	void sraw()
+	{
+		for (k = 0; k < n; k++)
+		{
+			if (b[k][0] == x and b[k][1] == y)
+			{
+				tr = 1;
+				k = n;
+			}
+		}
+		n++;
+	}
+
+	void print()
+	{
+		for (i = 0; i < n; i++)
+		{
+			cout << b[i][0] << " " << b[i][1] << endl;
+		}
+	}
+};
+int main()
+{
+	setlocale(LC_ALL, "Russian");
+	mosaic a;
+	a.find();
+	a.print();
+}
