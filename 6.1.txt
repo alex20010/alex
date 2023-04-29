@@ -1,0 +1,27 @@
+#При сложении массивов складываются значения каждого ряда. Делается это командой data+ones
+data = np.array([1, 2])
+ones = np.ones(2)
+print(data+ones)
+#Перевод миль в км
+data = np.array([1, 2])
+print(data * 1.6)
+#Индексация массива
+data = np.array([1, 2, 3])
+print(data[0])
+print(data[1])
+print(data[0:2])
+print(data[1:])
+#Агрегирование
+data = np.array([1, 2, 3])
+print (data.max())
+print (data.min())
+print (data.sum())
+print (data.mean()) #Ср. арифметическое отклонение
+print (data.prod()) #Результат умножения всех элементов
+#Транспонированая матрица
+data=np.array([[1, 2], [3, 4], [5, 6]])
+print(data.T)
+#Математические формулы
+predictions = np.array ([[1], [1], [1]])
+labels = np.array ([[1], [2], [3]])
+print( (1/3) * np.sum(np.square(predictions - labels)))
